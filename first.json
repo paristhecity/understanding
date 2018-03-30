@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "url": "https://think.cs.vt.edu/corgis/csv/drugs/drugs.csv?forcedownload=1",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": true,
+      "field": "Year",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "Year",
+      "aggregate": "count",
+      "type": "quantitative"
+    }
+  }
+}
