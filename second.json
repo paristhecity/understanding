@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/paristhecity/understanding/master/data/drugs.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": true,
+      "field": "18-25",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "Rates.Alcohol.Abuse Past Year.18-25",
+      "aggregate": "count",
+      "type": "quantitative"
+    }
+  }
+}
