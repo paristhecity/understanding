@@ -11,7 +11,7 @@
       "transform": [
         {
           "type": "filter",
-          "expr": "datum['18-25'] != null && datum['Rates.Alcohol.Abuse Past Year.18-25'] != null && datum['Year'] == '2014' && datum['State'] == 'Alabama' "
+          "expr": "datum['18-25'] != null && datum['RatesAlcoholAbusePastYear1825'] != null && datum['Year'] == '2014' && datum['State'] == 'Alabama' "
         }
       ]
     }
@@ -33,7 +33,7 @@
     "round": true,
     "nice": true,
     "zero": true,
-    "domain": {"data": "source", "field": "Rates.Alcohol.Abuse Past Year.18-25"},
+    "domain": {"data": "source", "field": "RatesAlcoholAbusePastYear1825"},
     "range": "height"
   }
 ],
@@ -58,24 +58,23 @@
   ],
 
   "marks": [
-  {
-    "name": "marks",
-    "type": "symbol",
-    "from": {"data": "source"},
-    "encode": {
-      "update": {
-        "x": {"scale": "x", "field": "18-25"},
-        "y": {"scale": "y", "field": "Rates.Alcohol.Abuse Past Year.18-25"},
-        "size" : {"value": 900},
-        "shape": {"value": "circle"},
-        "strokeWidth": {"value": 0},
-        "opacity": {"value": 1},
-        "color": {"value": "#000000"},
-        "fill": {"value": "opaque"},
-        "fillOpacity": {"value": 1}
+    {
+      "name": "marks",
+      "type": "symbol",
+      "from": {"data": "source"},
+      "encode": {
+        "update": {
+          "x": {"scale": "x", "field": "Horsepower"},
+          "y": {"scale": "y", "field": "Miles_per_Gallon"},
+          "size": {"value": 900},
+          "shape": {"value": "circle"},
+          "strokeWidth": {"value": 2},
+          "opacity": {"value": 0.5},
+          "stroke": {"value": "#4682b4"},
+          "fill": {"value": "transparent"}
+        }
       }
     }
-  }
-]
+  ]
   
 }
