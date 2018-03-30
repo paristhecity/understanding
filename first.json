@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
   "data": {
-    "url": "https://think.cs.vt.edu/corgis/csv/drugs/drugs.csv?forcedownload=1",
+    "url": "https://raw.githubusercontent.com/paristhecity/understanding/master/data/drugs.csv",
     "format": {
       "type": "csv"
     }
