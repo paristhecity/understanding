@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.json",
+  "width": 500,
+  "height": 500,
+  "padding": 5,
+  "title": {"text": "Alcohol abuse rates amongst 18-25 year olds in U.S. states over time.", "orient": "top"},
+  "data": [
+    {
+      "name": "drugs",
+      "url": "https://raw.githubusercontent.com/paristhecity/understanding/master/data/drugs.csv",
+      "format": {"type": "csv"}
+    }
+  ],
+  "scales": [
+    {
+      "name": "year",
+      "type": "point",
+      "range": "width",
+      "domain": {"data": "drugs","field": "Year"}
+    },
+    {
+      "name": "rate",
+      "type": "linear",
+      "range": "height",
+      "domainMax": 28,
+      "domainMin": 8,
+      "domain": {
+        "data": "drugs",
+        "field": "RatesAlcoholAbusePastYear1825"
+      },
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "state",
+      "type": "ordinal",
+      "range": "category",
+      "domain": {"data": "drugs","field": "State"}
+    }
+  ],
+  "axes": [
+    {"orient": "bottom","scale": "year","title": "Year"},
+    {
+      "orient": "left",
+      "scale": "rate",
+      "title": "Abuse rate"
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "series",
+          "data": "drugs",
+          "groupby": "State"
+        }
+      },
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "series"},
+          "encode": {
+            "enter": {
+              "x": {"scale": "year","field": "Year"},
+              "y": {
+                "scale": "rate",
+                "field": "RatesAlcoholAbusePastYear1825"
+              },
+              "stroke": {"scale": "state","field": "State"}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
