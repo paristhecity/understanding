@@ -1,14 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v3.json",
   "width": 500,
-  "height": 500,
+  "height": 850,
   "padding": 5,
-  "title": {"text": "Alcohol abuse rates amongst 18-25 year olds in U.S. states over time.", "orient": "top"},
+  "title": {
+    "text": "Alcohol abuse rates amongst 18-25 year olds in U.S. states over time.",
+    "orient": "top"
+  },
+  "legends": [
+    {
+      "fill": "state",
+      "orient": "right",
+      "encode": {
+        "labels": {
+          "interactive": true,
+          "update": {
+            "fontSize": {
+              "value": 12
+            },
+            "fill": {
+              "value": "black"
+            }
+          },
+          "hover": {
+            "fill": {
+              "value": "firebrick"
+            }
+          }
+        },
+        "symbols": {
+          "update": {
+            "stroke": {
+              "value": "transparent"
+            }
+          }
+        }
+      }
+    }
+  ],
   "data": [
     {
       "name": "drugs",
       "url": "https://raw.githubusercontent.com/paristhecity/understanding/master/data/drugs.csv",
-      "format": {"type": "csv"}
+      "format": {
+        "type": "csv"
+      }
     }
   ],
   "scales": [
@@ -16,7 +52,10 @@
       "name": "year",
       "type": "point",
       "range": "width",
-      "domain": {"data": "drugs","field": "Year"}
+      "domain": {
+        "data": "drugs",
+        "field": "Year"
+      }
     },
     {
       "name": "rate",
@@ -35,11 +74,18 @@
       "name": "state",
       "type": "ordinal",
       "range": "category",
-      "domain": {"data": "drugs","field": "State"}
+      "domain": {
+        "data": "drugs",
+        "field": "State"
+      }
     }
   ],
   "axes": [
-    {"orient": "bottom","scale": "year","title": "Year"},
+    {
+      "orient": "bottom",
+      "scale": "year",
+      "title": "Year"
+    },
     {
       "orient": "left",
       "scale": "rate",
@@ -59,15 +105,23 @@
       "marks": [
         {
           "type": "line",
-          "from": {"data": "series"},
+          "from": {
+            "data": "series"
+          },
           "encode": {
             "enter": {
-              "x": {"scale": "year","field": "Year"},
+              "x": {
+                "scale": "year",
+                "field": "Year"
+              },
               "y": {
                 "scale": "rate",
                 "field": "RatesAlcoholAbusePastYear1825"
               },
-              "stroke": {"scale": "state","field": "State"}
+              "stroke": {
+                "scale": "state",
+                "field": "State"
+              }
             }
           }
         }
