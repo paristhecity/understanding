@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.json",
+  "width": 900,
+  "height": 560,
+  "padding": {
+    "top": 0,
+    "left": 0,
+    "right": 0,
+    "bottom": 0
+  },
+  "autosize": "none",
+  "data": [
+    {
+      "name": "states",
+      "url": "data/us-10m.json",
+      "format": {
+        "type": "topojson",
+        "feature": "states"
+      },
+      "transform": [
+        {
+          "type": "geopath",
+          "projection": "projection"
+        }
+      ]
+    },
+    {
+      "name": "drugs",
+      "url": "https://raw.githubusercontent.com/paristhecity/understanding/master/data/drugs.csv",
+      "format": {
+        "type": "csv"
+      }
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "type": "albersUsa",
+      "scale": 1200,
+      "translate": [
+        {
+          "signal": "width / 2"
+        },
+        {
+          "signal": "height / 2"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "quantize",
+      "domain": [
+        0,
+        0.15
+      ],
+      "range": {
+        "scheme": "blues-9"
+      }
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "bottom-right",
+      "title": "Abuse rate in past year",
+      "format": "0.1%",
+      "encode": {
+        "symbols": {
+          "update": {
+            "shape": {
+              "value": "square"
+            },
+            "stroke": {
+              "value": "#ccc"
+            },
+            "strokeWidth": {
+              "value": 0.2
+            }
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "from": {
+        "data": "states"
+      },
+      "encode": {
+        "enter": {
+          "tooltip": {
+            "signal": "format(datum.RatesAlcoholAbusePastYear1825, '0.1%')"
+          }
+        },
+        "update": {
+          "path": {
+            "field": "path"
+          }
+        }
+      },
+      "transform": [
+        {
+          "type": "geoshape",
+          "projection": "projection"
+        }
+      ]
+    }
+  ]
+}
