@@ -3,7 +3,12 @@
   "title": "Rates of Alcohol Abuse in 18-25 year olds",
   "width": 500,
   "height": 300,
-  "padding": 5,
+  "padding": {
+    "top": 5,
+    "left": 5,
+    "bottom": 6,
+    "right": 100
+  },
   "signals": [
     {
       "name": "state",
@@ -114,7 +119,7 @@
       "grid": true,
       "domain": false,
       "orient": "bottom",
-      "tickCount": 5,
+      "tickCount": 5, 
       "title": "Population of Age Group 18-25"
     },
     {
@@ -128,7 +133,7 @@
   ],
   "marks": [
     {
-      "name": "marks",
+      "name": "mark",
       "type": "symbol",
       "from": {
         "data": "source"
@@ -155,50 +160,30 @@
           "opacity": {
             "value": 1
           },
-          "color": {
-            "value": "#000000"
-          },
           "fill": {
-            "value": "1"
-          },
+            "value": "#5254A3"
+            },
           "fillOpacity": {
             "value": 1
           }
         },
         "hover": {
           "size": {
-            "value": 50
-          },
-          "shape": {
-            "value": "circle"
-          },
-          "strokeWidth": {
-            "value": 5
+            "value": 70
           },
           "opacity": {
             "value": 1
           },
-          "color": {
+          "fill": {
             "value": "firebrick"
           },
           "fillOpacity": {
             "value": 1
-          },
-          "text": {
-            "value": "{datum['Year']}"
           }
         },
         "update": {
-          "x": {
-            "scale": "x",
-            "field": "Age"
-          },
-          "y": {
-            "scale": "y",
-            "field": "RatesAlcoholAbusePastYear1825"
-          },
           "size": {
-            "value": 24
+            "value": 20
           },
           "shape": {
             "value": "circle"
@@ -209,46 +194,11 @@
           "opacity": {
             "value": 1
           },
-          "color": {
-            "value": "#000000"
-          },
           "fill": {
-            "value": "1"
+            "value": "#5254A3"
           },
           "fillOpacity": {
             "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "fill": {
-            "value": "#000"
-          },
-          "text": {
-            "value": "Year: "
-          }
-        },
-        "update": {
-          "opacity": {
-            "value": 1
-          },
-          "x":{
-            "value": 50
-          },
-          "y":{
-            "value": 50
-          },
-          "align": {
-            "value": "left"
-          }
-        },
-        "hover": {
-          "opacity": {
-            "value": 0.5
           }
         }
       }
