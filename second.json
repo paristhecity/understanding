@@ -1,117 +1,120 @@
-{ 
- "$schema": "https://vega.github.io/schema/vega/v3.json",
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.json",
   "title": "Rates of Alcohol Abuse in 18-25 year olds",
   "width": 500,
   "height": 300,
   "padding": 5,
-
   "signals": [
-  {
-    "name": "state",
-    "value": "linear",
-    "bind": {
-      "input": "select",
-      "options": [
-        "Select",
-        "Alabama",
-        "Alaska",
-        "Arizona",
-        "Arkansas",
-        "California",
-        "Colorado",
-        "Connecticut",
-        "Delaware",
-        "District of Columbia",
-        "Florida",
-        "Georgia",
-        "Hawaii",
-        "Idaho",
-        "Illinois",
-        "Indiana",
-        "Iowa",
-        "Kansas",
-        "Kentucky",
-        "Louisiana",
-        "Maine",
-        "Maryland",
-        "Massachusetts",
-        "Michigan",
-        "Minnesota",
-        "Mississippi",
-        "Missouri",
-        "Montana",
-        "Nebraska",
-        "Nevada",
-        "New Hampshire",
-        "New Jersey",
-        "New Mexico",
-        "New York",
-        "North Carolina",
-        "North Dakota",
-        "Ohio",
-        "Oklahoma",
-        "Oregon",
-        "Pennsylvania",
-        "Rhode Island",
-        "South Carolina",
-        "South Dakota",
-        "Tennessee",
-        "Texas",
-        "Utah",
-        "Vermont",
-        "Virginia",
-        "Washington",
-        "West Virginia",
-        "Wisconsin",
-        "Wyoming"
-
-      ]
+    {
+      "name": "state",
+      "value": "linear",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Select",
+          "Alabama",
+          "Alaska",
+          "Arizona",
+          "Arkansas",
+          "California",
+          "Colorado",
+          "Connecticut",
+          "Delaware",
+          "District of Columbia",
+          "Florida",
+          "Georgia",
+          "Hawaii",
+          "Idaho",
+          "Illinois",
+          "Indiana",
+          "Iowa",
+          "Kansas",
+          "Kentucky",
+          "Louisiana",
+          "Maine",
+          "Maryland",
+          "Massachusetts",
+          "Michigan",
+          "Minnesota",
+          "Mississippi",
+          "Missouri",
+          "Montana",
+          "Nebraska",
+          "Nevada",
+          "New Hampshire",
+          "New Jersey",
+          "New Mexico",
+          "New York",
+          "North Carolina",
+          "North Dakota",
+          "Ohio",
+          "Oklahoma",
+          "Oregon",
+          "Pennsylvania",
+          "Rhode Island",
+          "South Carolina",
+          "South Dakota",
+          "Tennessee",
+          "Texas",
+          "Utah",
+          "Vermont",
+          "Virginia",
+          "Washington",
+          "West Virginia",
+          "Wisconsin",
+          "Wyoming"
+        ]
+      }
     }
-  }
- ],
-
- "data": [
+  ],
+  "data": [
     {
       "name": "source",
       "url": "https://raw.githubusercontent.com/paristhecity/understanding/master/data/drugs.csv",
-      "format":{
-        "type":"csv"
+      "format": {
+        "type": "csv"
       },
-      "transform": [{
-      "type": "filter",
-      "expr": "datum['State'] == state"
-      }]
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum['State'] == state"
+        }
+      ]
     }
   ],
-
   "scales": [
-  {
-    "name": "x",
-    "type": "linear",
-    "round": true,
-    "nice": true,
-    "zero": true,
-    "domain": {"data": "source", "field": "Age"},
-    "range": "width"
-  },
-  {
-    "name": "y",
-    "type": "linear",
-    "round": true,
-    "nice": true,
-    "zero": true,
-    "domain": {"data": "source", "field": "RatesAlcoholAbusePastYear1825"},
-    "range": "height"
-  }
- ],
-
+    {
+      "name": "x",
+      "type": "linear",
+      "round": true,
+      "nice": true,
+      "zero": true,
+      "domain": {
+        "data": "source",
+        "field": "Age"
+      },
+      "range": "width"
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "round": true,
+      "nice": true,
+      "zero": true,
+      "domain": {
+        "data": "source",
+        "field": "RatesAlcoholAbusePastYear1825"
+      },
+      "range": "height"
+    }
+  ],
   "axes": [
     {
       "scale": "x",
       "grid": true,
       "domain": false,
       "orient": "bottom",
-      "tickCount": 1,
+      "tickCount": 5,
       "title": "Population of Age Group 18-25"
     },
     {
@@ -123,26 +126,132 @@
       "title": "Rate of Alcohol Abuse"
     }
   ],
-
   "marks": [
-  {
-    "name": "marks",
-    "type": "symbol",
-    "from": {"data": "source"},
-    "encode": {
-      "update": {
-        "x": {"scale": "x", "field": "Age"},
-        "y": {"scale": "y", "field": "RatesAlcoholAbusePastYear1825"},
-        "size" : {"value": 20},
-        "shape": {"value": "circle"},
-        "strokeWidth": {"value": 0},
-        "opacity": {"value": 1},
-        "color": {"value": "#000000"},
-        "fill": {"value": "opaque"},
-        "fillOpacity": {"value": 1}
+    {
+      "name": "marks",
+      "type": "symbol",
+      "from": {
+        "data": "source"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x",
+            "field": "Age"
+          },
+          "y": {
+            "scale": "y",
+            "field": "RatesAlcoholAbusePastYear1825"
+          },
+          "size": {
+            "value": 20
+          },
+          "shape": {
+            "value": "circle"
+          },
+          "strokeWidth": {
+            "value": 0
+          },
+          "opacity": {
+            "value": 1
+          },
+          "color": {
+            "value": "#000000"
+          },
+          "fill": {
+            "value": "1"
+          },
+          "fillOpacity": {
+            "value": 1
+          }
+        },
+        "hover": {
+          "size": {
+            "value": 50
+          },
+          "shape": {
+            "value": "circle"
+          },
+          "strokeWidth": {
+            "value": 5
+          },
+          "opacity": {
+            "value": 1
+          },
+          "color": {
+            "value": "firebrick"
+          },
+          "fillOpacity": {
+            "value": 1
+          },
+          "text": {
+            "value": "{datum['Year']}"
+          }
+        },
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "Age"
+          },
+          "y": {
+            "scale": "y",
+            "field": "RatesAlcoholAbusePastYear1825"
+          },
+          "size": {
+            "value": 24
+          },
+          "shape": {
+            "value": "circle"
+          },
+          "strokeWidth": {
+            "value": 0
+          },
+          "opacity": {
+            "value": 1
+          },
+          "color": {
+            "value": "#000000"
+          },
+          "fill": {
+            "value": "1"
+          },
+          "fillOpacity": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "#000"
+          },
+          "text": {
+            "value": "Year: "
+          }
+        },
+        "update": {
+          "opacity": {
+            "value": 1
+          },
+          "x":{
+            "value": 50
+          },
+          "y":{
+            "value": 50
+          },
+          "align": {
+            "value": "left"
+          }
+        },
+        "hover": {
+          "opacity": {
+            "value": 0.5
+          }
+        }
       }
     }
-  }
-]
-  
+  ]
 }
